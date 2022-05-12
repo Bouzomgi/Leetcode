@@ -30,8 +30,8 @@ class Solution:
 #         return memo(n)
 
 #tabulation
-        if n<=2:
-            return n
+        if n==1:
+            return 1
         
         tab = [0] * (n+1) 
         tab[1] = 1
