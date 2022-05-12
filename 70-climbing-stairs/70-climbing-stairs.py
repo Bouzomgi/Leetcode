@@ -19,7 +19,7 @@ class Solution:
 #         return memo(n)
 
         #memoization using functools @cache
-        @cache
+        @lru_cache
         def memo(i):
             if i <= 2:
                 return i
