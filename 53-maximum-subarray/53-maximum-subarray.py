@@ -18,8 +18,10 @@ class Solution:
 #         return max(nums[0] + self.maxSubArray(nums[1:]), self.maxSubArray(nums[1:]))
     
         #memoization
-        #We have to keep track of a max value thru the process of finding the max subarray
-        #Tricky to do with recursion, so recursive memoization is not a good technique
+        #Recurrance relationship: we cannot always add our current number
+        #to the current max as subarrays are separated
+        #recursive memoization is not a good technique here because storing this maxVal outside the 
+        #recurrance relationship is difficult
 #         cache = {}
 #         cache[0] = nums[0]
 #         global maxSum
