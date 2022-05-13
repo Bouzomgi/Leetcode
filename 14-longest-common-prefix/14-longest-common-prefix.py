@@ -17,7 +17,7 @@ class Solution:
 #         return maxPre
                 
     
-        #Second approach
+        #Second approach (vertical scanning)
         for i in range(len(strs[0])):
             for word in strs:
                 if len(word) == i or word[i] != strs[0][i]: 
