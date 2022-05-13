@@ -1,6 +1,17 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         
+        #brute force
+        # maxVal = nums[0]
+        # for i in range(len(nums)):
+        #     arraySum = 0
+        #     for j in range(i, len(nums)):
+        #         arraySum += nums[j]
+        #         if arraySum > maxVal:
+        #             maxVal = arraySum
+        # return maxVal
+        
+        
         #naive recursive solution
 #         if not nums:
 #             return 0
