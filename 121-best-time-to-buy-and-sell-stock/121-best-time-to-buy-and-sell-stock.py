@@ -18,5 +18,5 @@ class Solution:
         for i in prices:
             minstock = min(minstock, i)
             maxprof = max(maxprof, i-minstock)
-        return max(maxprof, 0)
+        return maxprof
         
