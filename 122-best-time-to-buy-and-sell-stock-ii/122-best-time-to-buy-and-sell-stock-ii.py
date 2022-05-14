@@ -18,6 +18,8 @@ class Solution:
         #     prevstock = i
         # return maxprof
             
+        #second attempt
+        #can buy as many stocks as you want, so buy and sell every time the price goes up
         maxprof = 0
         for i in range(1, len(prices)):
             if prices[i] > prices[i-1]:
