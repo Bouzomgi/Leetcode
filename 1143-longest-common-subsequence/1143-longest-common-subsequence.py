@@ -12,6 +12,8 @@ class Solution:
          
 #         return rec(text1, text2)
     
+    
+    
         #Second attempt
 #         cache = {}
 #         def memo(i, j):
@@ -27,6 +29,8 @@ class Solution:
          
 #         return memo(len(text1)-1, len(text2)-1)
     
+    
+    
         #Tabulation
         tab = [[0 for _ in range(len(text2)+1)] for _ in range(len(text1)+1)]
         #Our table has an additional row and col of 0's, so the indexing will be different on the table + the strings
@@ -38,5 +42,24 @@ class Solution:
                     tab[i+1][j+1] = tab[i][j] + 1
                 else:
                     tab[i+1][j+1] = max(tab[i][j+1], tab[i+1][j])
+        print(tab)
         return tab[-1][-1]
+
+
+#         #Tabulation with reduced memory
+#         tab = [0 for _ in range(len(text2)+1)]
+#         #Our table has an additional row and col of 0's, so the indexing will be different on the table + the strings
+        
+#         diagonal = 0
+#         for i in range(len(text1)):
+#             for j in range(len(text2)):
+#                 if text1[i] == text2[j]:
+#                     #Take diagonal square as in that problem, the current letter has not been used up
+#                     tab[j+1] = diagonal + 1
+#                 else:
+#                     tab[j+1] = max(tab[j], tab[j+1])
+#                 diagonal = tab[j+1]
+#             print(tab)
+
+#         return tab[-1]
         
