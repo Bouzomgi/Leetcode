@@ -32,34 +32,34 @@ class Solution:
     
     
         #Tabulation
-        tab = [[0 for _ in range(len(text2)+1)] for _ in range(len(text1)+1)]
-        #Our table has an additional row and col of 0's, so the indexing will be different on the table + the strings
-
-        for i in range(len(text1)):
-            for j in range(len(text2)):
-                if text1[i] == text2[j]:
-                    #Take diagonal square as in that problem, the current letter has not been used up
-                    tab[i+1][j+1] = tab[i][j] + 1
-                else:
-                    tab[i+1][j+1] = max(tab[i][j+1], tab[i+1][j])
-        print(tab)
-        return tab[-1][-1]
-
-
-#         #Tabulation with reduced memory
-#         tab = [0 for _ in range(len(text2)+1)]
+#         tab = [[0 for _ in range(len(text2)+1)] for _ in range(len(text1)+1)]
 #         #Our table has an additional row and col of 0's, so the indexing will be different on the table + the strings
-        
-#         diagonal = 0
+
 #         for i in range(len(text1)):
 #             for j in range(len(text2)):
 #                 if text1[i] == text2[j]:
 #                     #Take diagonal square as in that problem, the current letter has not been used up
-#                     tab[j+1] = diagonal + 1
+#                     tab[i+1][j+1] = tab[i][j] + 1
 #                 else:
-#                     tab[j+1] = max(tab[j], tab[j+1])
-#                 diagonal = tab[j+1]
-#             print(tab)
+#                     tab[i+1][j+1] = max(tab[i][j+1], tab[i+1][j])
+#         print(tab)
+#         return tab[-1][-1]
 
-#         return tab[-1]
+
+        #Tabulation with reduced memory
+        prev = [0 for _ in range(len(text2)+1)]
+        curr = [0 for _ in range(len(text2)+1)]
+        #Our table has an additional row and col of 0's, so the indexing will be different on the table + the strings
+        
+        for i in range(len(text1)):
+            for j in range(len(text2)):
+                if text1[i] == text2[j]:
+                    #Take diagonal square as in that problem, the current letter has not been used up
+                    curr[j+1] = prev[j] + 1
+                else:
+                    curr[j+1] = max(curr[j], prev[j+1])
+                    
+            prev = curr[:]
+                    
+        return curr[-1]
         
