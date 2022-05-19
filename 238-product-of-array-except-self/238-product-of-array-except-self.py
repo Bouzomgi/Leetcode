@@ -27,13 +27,11 @@ class Solution:
 #         return forward
 
         #O(n) w/o using division using O(1) space
-        storeForward = 1
         final = [1 for _ in range(len(nums))]
         
         for i in range(1, len(nums)):
             final[i] *= nums[i-1] * final[i-1]            
         
-        print(final)
         backwards = 1
         for i in range(1, len(nums)):
             j = len(nums) - i - 1
