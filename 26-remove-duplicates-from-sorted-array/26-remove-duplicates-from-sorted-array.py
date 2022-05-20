@@ -3,11 +3,9 @@ class Solution:
         
         i = 1
         if len(nums) > 1:
-            j = 1
-            while j < len(nums):
+            for j in range(1, len(nums)):
                 if nums[j-1] != nums[j]:
-                    nums[i] = nums[j]
-                    i+=1
-                j+=1
+                        nums[i] = nums[j]
+                        i+=1
                 
         return i
