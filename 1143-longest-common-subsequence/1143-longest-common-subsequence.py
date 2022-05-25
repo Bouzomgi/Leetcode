@@ -14,20 +14,20 @@ class Solution:
     
     
     
-        #Second attempt
-#         cache = {}
-#         def memo(i, j):
-#             if i == -1 or j == -1:
-#                 return 0
-#             elif (i, j) in cache:
-#                 return cache[(i, j)]
-#             elif text1[i] == text2[j]:
-#                 return 1 + memo(i-1, j-1)
-#             else:
-#                 cache[(i, j)] = max(memo(i-1, j), memo(i, j-1))
-#                 return cache[(i, j)]
+        # Second attempt
+        cache = {}
+        def memo(i, j):
+            if i == -1 or j == -1:
+                return 0
+            elif (i, j) in cache:
+                return cache[(i, j)]
+            elif text1[i] == text2[j]:
+                return 1 + memo(i-1, j-1)
+            else:
+                cache[(i, j)] = max(memo(i-1, j), memo(i, j-1))
+                return cache[(i, j)]
          
-#         return memo(len(text1)-1, len(text2)-1)
+        return memo(len(text1)-1, len(text2)-1)
     
     
     
@@ -46,20 +46,20 @@ class Solution:
 #         return tab[-1][-1]
 
 
-        #Tabulation with reduced memory
-        prev = [0 for _ in range(len(text2)+1)]
-        curr = [0 for _ in range(len(text2)+1)]
-        #Our table has an additional row and col of 0's, so the indexing will be different on the table + the strings
+        #Tabulation with reduced memory usage
+#         prev = [0 for _ in range(len(text2)+1)]
+#         curr = [0 for _ in range(len(text2)+1)]
+#         #Our table has an additional row and col of 0's, so the indexing will be different on the table + the strings
         
-        for i in range(len(text1)):
-            for j in range(len(text2)):
-                if text1[i] == text2[j]:
-                    #Take diagonal square as in that problem, the current letter has not been used up
-                    curr[j+1] = prev[j] + 1
-                else:
-                    curr[j+1] = max(curr[j], prev[j+1])
+#         for i in range(len(text1)):
+#             for j in range(len(text2)):
+#                 if text1[i] == text2[j]:
+#                     #Take diagonal square as in that problem, the current letter has not been used up
+#                     curr[j+1] = prev[j] + 1
+#                 else:
+#                     curr[j+1] = max(curr[j], prev[j+1])
                     
-            prev = curr[:]
+#             prev = curr[:]
                     
-        return curr[-1]
+#         return curr[-1]
         
