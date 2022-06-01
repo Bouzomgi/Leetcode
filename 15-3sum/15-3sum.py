@@ -1,28 +1,65 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        #Brute force
+#         total = []
+#         onlyOne = set()
+#         for i in range(len(nums)):
+#             for j in range(i+1, len(nums)):
+#                 for k in range(j+1, len(nums)):
+#                     x, y, z = nums[i], nums[j], nums[k]
+#                     if x+y+z == 0:
+#                         curr = tuple(sorted([x, y, z]))
+#                         if curr not in onlyOne:
+#                             total.append([x, y, z])
+#                             onlyOne.add(curr)
+                        
+#         return total
+    
+    
+#         #Runtime: O(n^2)
+#         total = []
+#         tracker = {}
+#         onlyOne = set()
+        
+#         for i in range(len(nums)):
+#             for j in range(i+1, len(nums)):
+#                     x, y = nums[i], nums[j]
+#                     z = -(x + y)
+#                     if z not in tracker:
+#                         tracker[z] = [i, j]
+                        
+#         for k in range(len(nums)):
+#             z = nums[k]
+#             if z in tracker and k not in tracker[z]:
+#                 x, y = nums[tracker[z][0]], nums[tracker[z][1]]
+#                 combo = tuple(sorted([x, y, z]))
+#                 if combo not in onlyOne:
+#                     total.append([x, y, z])
+#                     onlyOne.add(combo)
+                        
+#         return total
 
-        res = []
+        def twoSum2(start, target, res):
+            i, j = start, len(nums)-1
+            while i < j:
+                x, y = nums[i], nums[j]
+                if x + y == target:
+                    res.append([-target, x, y])
+                    i += 1
+                    j -= 1
+                    while i < j and nums[i] == nums[i-1]:
+                        i += 1
+                elif x + y < target:
+                    i += 1
+                elif x + y > target:
+                    j -= 1
+
+        final = []
         nums.sort()
-        for i in range(len(nums)):
-            if nums[i] > 0:
-                break
-            if i == 0 or nums[i - 1] != nums[i]:
-                self.twoSumII(nums, i, res)
-        return res
+        for k in range(len(nums)):
+            val = nums[k]
+            if k == 0 or val != nums[k-1]:
+                twoSum2(k+1, -val, final)
+        return final
 
-
-    def twoSumII(self, nums: List[int], i: int, res: List[List[int]]):
-        lo, hi = i + 1, len(nums) - 1
-        while (lo < hi):
-            sum = nums[i] + nums[lo] + nums[hi]
-            if sum < 0:
-                lo += 1
-            elif sum > 0:
-                hi -= 1
-            else:
-                res.append([nums[i], nums[lo], nums[hi]])
-                lo += 1
-                hi -= 1
-                while lo < hi and nums[lo] == nums[lo - 1]:
-                    lo += 1
     
